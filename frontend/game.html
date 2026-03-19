@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Save The Ship</title>
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./styles/game.css">
+  <link rel="stylesheet" href="./styles/mobile.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🎮 Save The Ship</h1>
+      <div class="connection-status">
+        <span id="status">Disconnected</span>
+      </div>
+    </div>
+    
+    <div class="main-content">
+      <div id="gameContainer">
+        <button type="button" id="chatToggle" class="chat-toggle-btn" title="Toggle chat (Enter)" aria-label="Toggle chat">💬</button>
+      </div>
+
+      <!-- Mobile controls (hidden on desktop) -->
+      <div id="joystickZone" class="joystick-zone"></div>
+      <div id="mobileActions" class="mobile-actions">
+        <button type="button" id="btnAttack" class="mobile-action-btn attack-btn" aria-label="Attack">⚔️</button>
+        <button type="button" id="btnFix" class="mobile-action-btn fix-btn" aria-label="Fix panel">🔧</button>
+        <button type="button" id="btnLight" class="mobile-action-btn light-btn" aria-label="Toggle flashlight">🔦</button>
+        <button type="button" id="btnJump" class="mobile-action-btn jump-btn" aria-label="Jump">⬆️</button>
+      </div>
+      <aside id="chatWindow" class="chat-window" aria-hidden="true">
+        <div class="chat-header">
+          <h3>Chat</h3>
+          <button type="button" class="chat-close" aria-label="Close chat">×</button>
+        </div>
+        <div class="chat-messages"></div>
+        <div class="chat-input-area">
+          <input type="text" id="chatInput" placeholder="Type a message..." maxlength="500" />
+        </div>
+      </aside>
+      
+      <div class="ui-panel">
+        <div class="info-section">
+          <h2>Game Info</h2>
+          <p>Lobby ID: <span id="gameId">-</span></p>
+          <p>Your ID: <span id="playerId">-</span></p>
+          <p>Players Online: <span id="playerCount">0</span></p>
+        </div>
+        
+        <div class="players-section">
+          <h3>Players</h3>
+          <ul id="playersList"></ul>
+        </div>
+        
+        <div class="controls-section">
+          <h3>Controls</h3>
+          <p><strong>WASD</strong> or <strong>Arrow keys</strong> — Move</p>
+          <p><strong>Mouse</strong> — Look around (click game area first to lock pointer)</p>
+          <p><strong>Space</strong> — Jump</p>
+          <p><strong>Q</strong> — Attack / kick (saboteur: damage crew; crew: defend)</p>
+          <p><strong>F</strong> — Fix panel (crew only; stand near broken panel)</p>
+          <p><strong>E</strong> — Toggle flashlight</p>
+          <p><strong>Enter</strong> — Open / close chat</p>
+          <p><strong>Esc</strong> — Release mouse pointer</p>
+          <p id="instructions">Click the game area to lock your mouse and start playing.</p>
+        </div>
+        
+        <!-- <div class="stats-section">
+          <h3>Stats</h3>
+          <p>Position: <span id="position">0, 0, 0</span></p>
+          <p>FPS: <span id="fps">60</span></p>
+        </div> -->
+      </div>
+    </div>
+  </div>
+  
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>

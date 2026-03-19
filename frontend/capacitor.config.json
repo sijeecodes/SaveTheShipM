@@ -1,0 +1,17 @@
+{
+  "appId": "com.savetheship.app",
+  "appName": "Save The Ship",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "https",
+    "iosScheme": "https"
+  },
+  "ios": {
+    "contentInset": "automatic",
+    "allowsLinkPreview": false,
+    "scrollEnabled": false
+  },
+  "android": {
+    "allowMixedContent": true
+  }
+}

@@ -1,0 +1,3 @@
+{
+    "body": "{\"action\": \"expire\", \"lobbyId\": \"LOBBY#test-uuid\", \"secret\": \"<ADMIN_SECRET>\"}"
+}
