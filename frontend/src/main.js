@@ -34,6 +34,7 @@ function initChatToggle(game) {
 
   chatToggle?.addEventListener('click', toggleChat);
   chatClose?.addEventListener('click', toggleChat);
+  chatClose?.addEventListener('touchend', (e) => { e.preventDefault(); toggleChat(); });
 
   document.addEventListener('keydown', (e) => {
     if (e.key !== 'Enter' || e.repeat) return;

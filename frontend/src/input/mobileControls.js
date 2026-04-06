@@ -20,6 +20,8 @@ export class MobileControls {
     this._setupCameraTouch();
     this._setupActionButtons();
     this._showMobileUI();
+    // Halve joystick turn speed on mobile
+    this.game.character.turnSpeed = 1.5;
   }
 
   destroy() {
@@ -50,6 +52,13 @@ export class MobileControls {
       keys['s'] = y < -0.3;
       keys['a'] = x < -0.3;
       keys['d'] = x > 0.3;
+
+      // Scale turn speed by horizontal deflection (o'clock position):
+      // |x| ~0.5 (11/1 o'clock) → 0.5, ~0.87 (10/2) → 1.0, ~1.0 (9/3) → 1.5
+      const absX = Math.abs(x);
+      if (absX > 0.3) {
+        this.game.character.turnSpeed = absX < 0.7 ? 0.5 : absX < 0.95 ? 1.0 : 1.5;
+      }
     });
 
     this._joystick.on('end', () => {
@@ -57,6 +66,7 @@ export class MobileControls {
       keys['s'] = false;
       keys['a'] = false;
       keys['d'] = false;
+      this.game.character.turnSpeed = 1.5; // reset to max
     });
   }
 
@@ -88,7 +98,7 @@ export class MobileControls {
           this._lastTouchX = touch.clientX;
           this._lastTouchY = touch.clientY;
 
-          this.game.character.yaw -= dx * 0.005;
+          this.game.character.yaw -= dx * 0.010;
           this.game.fpsCamera.pitch -= dy * 0.005;
           this.game.fpsCamera.pitch = Math.max(
             -Math.PI / 2,

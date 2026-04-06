@@ -113,7 +113,7 @@
   .ui-panel {
     position: fixed;
     top: 0;
-    right: 20px;
+    right: 0;
     width: 117px;
     height: 100dvh;
     z-index: 160;
@@ -138,13 +138,24 @@
     top: 0;
     width: 240px;
     height: 100dvh;
+    z-index: 350;
+  }
+
+  /* Ensure close button taps register on mobile */
+  .chat-close {
+    touch-action: manipulation;
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   /* Chat toggle repositioned for landscape */
   .chat-toggle-btn {
     bottom: auto !important;
     top: 8px;
-    right: 56px;
+    right: 8px;
     width: 36px;
     height: 36px;
     font-size: 16px;
