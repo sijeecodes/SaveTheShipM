@@ -9,9 +9,15 @@
   "ios": {
     "contentInset": "automatic",
     "allowsLinkPreview": false,
-    "scrollEnabled": false
+    "scrollEnabled": false,
+    "preferredContentMode": "mobile"
   },
   "android": {
     "allowMixedContent": true
+  },
+  "plugins": {
+    "ScreenOrientation": {
+      "orientation": "landscape"
+    }
   }
 }

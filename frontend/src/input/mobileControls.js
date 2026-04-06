@@ -37,16 +37,15 @@ export class MobileControls {
 
     this._joystick = nipplejs.create({
       zone,
-      mode: 'static',
-      position: { left: '80px', bottom: '80px' },
+      mode: 'dynamic',
       size: 120,
       color: 'rgba(102,126,234,0.5)',
-      fadeTime: 0,
+      fadeTime: 250,
     });
 
     const keys = this.game.inputState.keys;
     this._joystick.on('move', (_e, data) => {
-      const { x, y } = data.vector; // -1..1
+      const { x, y } = data.vector; // -1..1 (y positive = up on screen)
       keys['w'] = y > 0.3;
       keys['s'] = y < -0.3;
       keys['a'] = x < -0.3;

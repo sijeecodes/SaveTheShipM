@@ -1,4 +1,8 @@
 /* Game area - canvas fills container */
+h1 {
+    text-align: center;
+}
+
 #gameContainer {
     position: relative;
     min-width: 0;
@@ -441,8 +445,10 @@
 /* ─── Game Timer ─── */
 .game-timer {
     position: absolute;
-    top: 14px;
-    right: 14px;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    right: auto;
     padding: 8px 18px;
     background: rgba(0, 0, 0, 0.75);
     color: #fff;
@@ -651,4 +657,45 @@
 
 .game-over-btn:active {
     transform: scale(0.98);
+}
+
+/* ── Game Over: landscape-compact ──────────────────────────── */
+@media (orientation: landscape) {
+    .game-over-overlay {
+        height: 100dvh;
+    }
+
+    .game-over-box {
+        gap: 8px;
+        padding: 20px 40px;
+        border-radius: 14px;
+        max-height: 90dvh;
+        overflow-y: auto;
+    }
+
+    .game-over-result {
+        font-size: 28px;
+        letter-spacing: 4px;
+    }
+
+    .game-over-team {
+        font-size: 16px;
+    }
+
+    .game-over-reason {
+        font-size: 12px;
+        max-width: 320px;
+    }
+
+    .game-over-role {
+        font-size: 11px;
+        margin-top: 2px;
+    }
+
+    .game-over-btn {
+        margin-top: 8px;
+        padding: 10px 36px;
+        font-size: 14px;
+        border-radius: 8px;
+    }
 }

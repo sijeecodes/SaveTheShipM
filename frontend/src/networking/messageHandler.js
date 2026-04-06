@@ -488,13 +488,13 @@ export class MessageHandler {
       : 'text-shadow: 0 0 30px rgba(255, 100, 100, 0.5);';
 
     overlay.innerHTML = `
-      <div style="display:flex;flex-direction:column;align-items:center;gap:16px;padding:48px 64px;border-radius:20px;text-align:center;${boxBg}">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:24px 64px;border-radius:20px;text-align:center;${boxBg}">
         <div style="font-size:48px;font-weight:900;letter-spacing:6px;color:#fff;${resultGlow}">${isWinner ? 'VICTORY' : 'DEFEAT'}</div>
         <div style="font-size:24px;color:rgba(255,255,255,0.9);font-weight:600;">${winningTeam === 'saboteur' ? '🔥 Saboteur' : '🔧 Crew'} Wins!</div>
         <div style="font-size:15px;color:rgba(255,255,255,0.65);max-width:400px;">${reason}</div>
-        <div style="font-size:14px;color:rgba(255,255,255,0.5);margin-top:4px;">You were: <strong>${playerRole === 'saboteur' ? '🔥 Saboteur' : '🔧 Crew'}</strong></div>
+        <div style="font-size:14px;color:rgba(255,255,255,0.5);margin-top:2px;">You were: <strong>${playerRole === 'saboteur' ? '🔥 Saboteur' : '🔧 Crew'}</strong></div>
         ${this.getScoreStatsHtml(game, message)}
-        <button id="newGameBtn" style="margin-top:20px;padding:14px 48px;font-size:18px;font-weight:700;border:none;border-radius:10px;cursor:pointer;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;letter-spacing:1px;box-shadow:0 4px 20px rgba(102,126,234,0.4);">New Game</button>
+        <button id="newGameBtn" style="margin-top:10px;padding:7px 48px;font-size:18px;font-weight:700;border:none;border-radius:10px;cursor:pointer;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;letter-spacing:1px;box-shadow:0 4px 20px rgba(102,126,234,0.4);">New Game</button>
       </div>
     `;
     document.body.appendChild(overlay);
@@ -521,8 +521,8 @@ export class MessageHandler {
     let statsHtml = '';
     if (message.playerStats && game.playerId && message.playerStats[game.playerId]) {
       const stats = message.playerStats[game.playerId];
-      statsHtml = `<div style="margin-top:18px;font-size:18px;color:#fff;font-weight:700;">Score: <span style='color:#ffe066;'>${stats.score}</span></div>`;
-      statsHtml += `<div style="margin-top:8px;font-size:14px;color:#fff;">`;
+      statsHtml = `<div style="margin-top:9px;font-size:18px;color:#fff;font-weight:700;">Score: <span style='color:#ffe066;'>${stats.score}</span></div>`;
+      statsHtml += `<div style="margin-top:4px;font-size:14px;color:#fff;">`;
       if (stats.role === 'saboteur') {
         statsHtml += `Damage Done: <b>${stats.damageDone}</b>`;
       } else {

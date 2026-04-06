@@ -403,3 +403,163 @@ button:disabled {
     color: #f87171;
     border-color: rgba(248, 113, 113, 0.4);
 }
+
+/* ── Landscape / horizontal layout ─────────────────────────── */
+@media (orientation: landscape) {
+    body {
+        min-height: 100dvh;
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+    }
+
+    /* Matchmaking card — compact for short landscape height */
+    .card {
+        padding: 1.25rem 2rem;
+        max-width: 480px;
+    }
+
+    .game-name {
+        font-size: 1.5rem;
+        margin-bottom: 0.15rem;
+    }
+
+    .card-subtitle {
+        font-size: 0.8rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .card input {
+        padding: 0.6rem 0.85rem;
+        font-size: 0.9rem;
+        margin-bottom: 0.6rem;
+    }
+
+    .card button,
+    #findMatchBtn,
+    #leaderboard {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    #leaderboard {
+        margin-top: 0.4rem;
+    }
+
+    .status {
+        margin-top: 0.6rem;
+        font-size: 0.85rem;
+    }
+
+    .result {
+        margin-top: 0.5rem;
+        padding: 0.6rem 0.85rem;
+        font-size: 0.8rem;
+    }
+
+    /* Lobby view — two-column horizontal layout to fit screen */
+    .lobby-view {
+        max-width: 95vw;
+        width: 750px;
+        max-height: 95dvh;
+        padding: 0.75rem 1.25rem;
+        display: none;
+        overflow-y: auto;
+    }
+
+    .lobby-view.visible {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto 1fr auto;
+        gap: 0.25rem 1rem;
+        align-items: start;
+    }
+
+    /* Title + label span full width */
+    .lobby-view .game-name {
+        grid-column: 1 / -1;
+        font-size: 1.1rem;
+        margin-bottom: 0;
+    }
+
+    .lobby-view .lobby-label {
+        grid-column: 1 / -1;
+        margin-bottom: 0.1rem;
+        font-size: 0.7rem;
+    }
+
+    .lobby-view .lobby-status {
+        grid-column: 1 / -1;
+        margin-bottom: 0.15rem;
+        min-height: 0.8rem;
+        font-size: 0.8rem;
+    }
+
+    .lobby-view .lobby-countdown {
+        grid-column: 1 / -1;
+        margin-bottom: 0.15rem;
+        font-size: 0.8rem;
+    }
+
+    /* Left column: lobby info */
+    .lobby-view .lobby-info {
+        grid-column: 1;
+        grid-row: 4;
+        margin-bottom: 0;
+        padding: 0.4rem 0.65rem;
+        font-size: 0.7rem;
+        line-height: 1.4;
+    }
+
+    .lobby-view .lobby-info div + div {
+        margin-top: 0.25rem;
+    }
+
+    /* Right column: players */
+    .lobby-view .players-title {
+        grid-column: 2;
+        grid-row: 4;
+        margin-bottom: 0.2rem;
+        font-size: 0.65rem;
+        align-self: start;
+        display: none;
+    }
+
+    .lobby-view .player-list {
+        grid-column: 2;
+        grid-row: 4;
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+        max-height: calc(95dvh - 120px);
+        overflow-y: auto;
+    }
+
+    .player-item {
+        padding: 0.3rem 0.5rem;
+        margin-bottom: 0;
+        border-radius: 8px;
+    }
+
+    .player-item .avatar {
+        width: 24px;
+        height: 24px;
+        font-size: 0.65rem;
+        border-radius: 6px;
+    }
+
+    .player-item .name {
+        font-size: 0.75rem;
+    }
+
+    .player-item .badge {
+        font-size: 0.55rem;
+        padding: 0.1rem 0.3rem;
+    }
+
+    /* Leave button spans full width at bottom */
+    .leave-btn {
+        grid-column: 1 / -1;
+        margin-top: 0.4rem;
+        padding: 0.4rem 0.75rem;
+        font-size: 0.8rem;
+    }
+}

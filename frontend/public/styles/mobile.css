@@ -6,9 +6,10 @@
   position: fixed;
   bottom: 0;
   left: 0;
-  width: 200px;
-  height: 200px;
+  width: 50vw;
+  height: 100dvh;
   z-index: 300;
+  touch-action: none;
 }
 
 .joystick-zone.visible {
@@ -19,9 +20,9 @@
 .mobile-actions {
   display: none;
   position: fixed;
-  bottom: 24px;
+  bottom: 12px;
   right: 16px;
-  flex-direction: column;
+  flex-direction: row;
   gap: 12px;
   z-index: 300;
 }
@@ -75,11 +76,11 @@
   display: none !important;
 }
 
-/* ── Mobile layout overrides ─────────────────────────────────── */
+/* ── Mobile layout overrides (landscape) ────────────────────── */
 @media (pointer: coarse) {
   /* Full-screen game canvas */
   .main-content {
-    flex-direction: column;
+    flex-direction: row;
   }
 
   #gameContainer {
@@ -90,31 +91,36 @@
     left: 0;
   }
 
+  /* Hide the header bar entirely on mobile */
   .header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 150;
-    height: 44px;
-    padding: 6px 12px;
-    opacity: 0.85;
+    display: none;
   }
 
-  .header h1 {
-    font-size: 16px;
+  /* Float #status over the canvas, top-right */
+  .connection-status {
+    position: fixed;
+    top: 8px;
+    right: 8px;
+    z-index: 200;
+  }
+
+  #status {
+    font-size: 10px;
+    padding: 3px 8px;
   }
 
   /* Side panel becomes a toggleable overlay */
   .ui-panel {
     position: fixed;
-    top: 44px;
-    right: 0;
-    width: 200px;
-    height: calc(100dvh - 44px);
+    top: 0;
+    right: 20px;
+    width: 117px;
+    height: 100dvh;
     z-index: 160;
-    font-size: 11px;
-    transform: translateX(100%);
+    font-size: 7px;
+    padding: 5px;
+    gap: 4px;
+    transform: translateX(calc(100% + 20px));
     transition: transform 0.25s ease-out;
   }
 
@@ -122,32 +128,60 @@
     transform: translateX(0);
   }
 
-  /* Chat window adjustments */
-  .chat-window {
-    top: 44px;
-    width: 260px;
-    height: calc(100dvh - 44px);
+  /* Hide controls section on mobile to save space */
+  .ui-panel .controls-section {
+    display: none;
   }
 
-  /* Chat toggle moves to top-left to not overlap action buttons */
+  /* Chat window adjustments for landscape */
+  .chat-window {
+    top: 0;
+    width: 240px;
+    height: 100dvh;
+  }
+
+  /* Chat toggle repositioned for landscape */
   .chat-toggle-btn {
     bottom: auto !important;
-    top: 54px;
-    right: 12px;
-    width: 44px;
-    height: 44px;
-    font-size: 20px;
+    top: 8px;
+    right: 56px;
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
     opacity: 0.75;
   }
 
-  /* Hearts UI smaller on mobile */
+  /* Hearts UI adjusted for landscape */
   .hearts-ui {
-    top: 50px;
-    left: 10px;
+    top: 8px;
+    left: env(safe-area-inset-left, 10px);
   }
 
   .heart {
+    font-size: 18px;
+  }
+
+  .dead-label {
+    font-size: 14px;
+  }
+
+  /* Joystick zone — left half of screen in landscape */
+  .joystick-zone {
+    width: 45vw;
+    height: 100dvh;
+  }
+
+  /* Mobile action buttons — horizontal row, compact for landscape */
+  .mobile-action-btn {
+    width: 50px;
+    height: 50px;
     font-size: 22px;
+  }
+
+  /* Panel damage notifications compact */
+  .panel-damage-notification {
+    font-size: 13px;
+    padding: 6px 16px;
   }
 
   /* Prevent text selection and callout on long press */
@@ -159,13 +193,15 @@
   }
 }
 
-/* Safe area inset for notched devices */
+/* Safe area inset for notched devices (landscape has left/right notch) */
 @supports (padding-bottom: env(safe-area-inset-bottom)) {
   .joystick-zone {
     bottom: env(safe-area-inset-bottom);
+    left: env(safe-area-inset-left);
   }
 
   .mobile-actions {
-    bottom: calc(24px + env(safe-area-inset-bottom));
+    bottom: calc(12px + env(safe-area-inset-bottom));
+    right: calc(16px + env(safe-area-inset-right));
   }
 }
