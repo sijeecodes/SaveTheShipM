@@ -21,7 +21,7 @@
   display: none;
   position: fixed;
   bottom: 12px;
-  right: 16px;
+  right: 12px;
   flex-direction: row;
   gap: 12px;
   z-index: 300;
@@ -154,7 +154,7 @@
   /* Chat toggle repositioned for landscape */
   .chat-toggle-btn {
     bottom: auto !important;
-    top: 8px;
+    top: 52px;
     right: 8px;
     width: 36px;
     height: 36px;
@@ -164,7 +164,7 @@
 
   /* Hearts UI adjusted for landscape */
   .hearts-ui {
-    top: 8px;
+    top: 58px;
     left: env(safe-area-inset-left, 10px);
   }
 
@@ -189,6 +189,12 @@
     font-size: 22px;
   }
 
+  /* Push action buttons away from the right edge */
+  .mobile-actions {
+    right: calc(-44px + env(safe-area-inset-right, 0px)) !important;
+    bottom: calc(env(safe-area-inset-bottom, 0px)) !important;
+  }
+
   /* Panel damage notifications compact */
   .panel-damage-notification {
     font-size: 13px;
@@ -209,10 +215,5 @@
   .joystick-zone {
     bottom: env(safe-area-inset-bottom);
     left: env(safe-area-inset-left);
-  }
-
-  .mobile-actions {
-    bottom: calc(12px + env(safe-area-inset-bottom));
-    right: calc(16px + env(safe-area-inset-right));
   }
 }
