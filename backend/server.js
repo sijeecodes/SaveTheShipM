@@ -95,7 +95,7 @@ function assignUniqueColor(game) {
 async function loadRolesFromDB(lobbyId) {
   try {
     const res = await ddb.send(new QueryCommand({
-      TableName: "SaveTheShipGameLobbies",
+      TableName: "SaveTheShip",
       KeyConditionExpression: "PK = :pk AND begins_with(SK, :playerPrefix)",
       ExpressionAttributeValues: {
         ":pk": lobbyId,
@@ -116,7 +116,7 @@ async function loadRolesFromDB(lobbyId) {
   }
 }
 
-const TABLE_NAME = "SaveTheShipGameLobbies";
+const TABLE_NAME = "SaveTheShip";
 
 // Validate that player exists in lobby in DynamoDB and return player data (DDB is single source of truth)
 async function validatePlayerInLobby(lobbyId, playerId) {
