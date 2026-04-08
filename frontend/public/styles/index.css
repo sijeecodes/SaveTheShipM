@@ -4,6 +4,7 @@
 
 body {
     margin: 0;
+    padding: 15px;
     font-family: "Outfit", system-ui, sans-serif;
     background: #0a1628;
     min-height: 100vh;
